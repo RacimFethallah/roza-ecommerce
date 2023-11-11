@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaSearch, FaShoppingBag, FaPhone } from 'react-icons/fa';
+import { FaSearch, FaShoppingBag, FaPhone, FaTrash } from 'react-icons/fa';
 import { FaHouse, FaBoxArchive } from 'react-icons/fa6';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { TfiClose } from 'react-icons/tfi';
-import { IoIosPeople} from 'react-icons/io';
+import { IoIosPeople } from 'react-icons/io';
 import { AiOutlineMenu, AiFillInfoCircle } from 'react-icons/ai';
 
 
@@ -15,20 +15,30 @@ export default function Header() {
 
     const [isSidebarMenu, setIsSidebarMenu] = useState(false);
     const [isShopMenu, setIsShopMenu] = useState(false);
+    const [shopItems, setShopItems] = useState<string[]>([]); // Explicitly define type as string[]
 
     const toggleSideMenu = () => {
         setIsSidebarMenu(!isSidebarMenu);
     };
     const closeSideMenu = () => {
         setIsSidebarMenu(false);
-      };
+    };
 
     const toggleShopMenu = () => {
         setIsShopMenu(!isShopMenu);
     }
     const closeShopMenu = () => {
         setIsShopMenu(false);
-      };
+    };
+    const addItemToShop = (item: string) => {
+        setShopItems([...shopItems, item]);
+    };
+
+    const removeItemFromShop = (index: number) => {
+        const newShopItems = [...shopItems];
+        newShopItems.splice(index, 1);
+        setShopItems(newShopItems);
+    };
     return (
         // <header className='z-[999] relative'>
         //     <nav className='flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem]  sm:py-0 bg-white'>
@@ -55,7 +65,10 @@ export default function Header() {
                         className="justify-start items-center gap-2.5 ml-2 flex hover:border-b-[0.15rem] hover:shadow-xl hover:border-black   transition-all ease-in-out  duration-150"
                         initial={{ y: -100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        onClick={toggleSideMenu}>
+                        onClick={() => {
+                            toggleSideMenu();
+                            addItemToShop("bathbomb");
+                        }}>
                         <div className="text-black text-base font-normal flex items-center gap-2 "><AiOutlineMenu />Menu</div>
                     </motion.li>
                     <motion.li
@@ -89,8 +102,11 @@ export default function Header() {
                         className="bg-black bg-opacity-0 justify-center items-center gap-2.5 mr-2 flex hover:border-b-[0.15rem] hover:shadow-2xl hover:border-black   transition-all ease-in-out  duration-150"
                         initial={{ y: -100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}>
-                        <div className=" text-black text-base font-normal  flex items-center gap-2 "
-                        onClick={toggleShopMenu}>Mon panier <FaShoppingBag /></div>
+                        <div className="text-black text-base font-normal flex items-center gap-2 -mr-3" onClick={toggleShopMenu}>
+                            Mon panier <FaShoppingBag />
+                            <span className='border border-black bg-white rounded-full w-6 h-6 text-center -translate-x-4 -translate-y-2 shadow-xl'>{shopItems.length}</span>
+                        </div>
+
                     </motion.li>
                 </ul>
             </motion.nav>
@@ -105,17 +121,17 @@ export default function Header() {
                     exit={{ y: -100, opacity: 0 }}
                 >
                     <button className='flex flex-row justify-center  items-center gap-2 text-xl mb-20  '
-                    onClick={closeSideMenu}>
-                    <TfiClose />
+                        onClick={closeSideMenu}>
+                        <TfiClose />
                         Fermer
                     </button>
                     <ul className=''>
                         <li className=' flex flex-row items-center gap-3 text-xl mb-14 cursor-pointer'>
-                        <FaHouse />
+                            <FaHouse />
                             Acceuil
                         </li>
                         <li className=' flex flex-row items-center gap-3 text-xl mb-14 cursor-pointer'>
-                        <AiFillInfoCircle />
+                            <AiFillInfoCircle />
                             À propos
                         </li>
                         <li className=' flex flex-row items-center gap-3 text-xl mb-14 cursor-pointer'>
@@ -127,7 +143,7 @@ export default function Header() {
                             Témoignages
                         </li>
                         <li className=' flex flex-row items-center gap-3 text-xl mb-14 cursor-pointer'
-                        onClick={toggleShopMenu}>
+                            onClick={toggleShopMenu}>
                             <BsTelephoneFill />
                             Nous contacter
                         </li>
@@ -138,30 +154,69 @@ export default function Header() {
             {/* ShopMenu */}
             {isShopMenu && (
                 <motion.nav
-                    className="fixed top-0 right-0 h-screen w-[22rem] bg-white shadow-xl p-5"
+                    className="fixed top-0 right-0 h-screen w-[22rem] bg-white shadow-xl flex flex-col"
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ y: 100, opacity: 0 }}
                 >
-                    <button className='flex flex-row right-5 absolute items-center gap-2 text-xl  '
-                    onClick={closeShopMenu}>
-                    <TfiClose />
-                        Fermer
-                    </button>
-                    <ul>
-                        <li>
+                    <div className='flex flex-row items-center  p-5'>
+                        <h1 className='float-left text-2xl '>Sac (<span>{shopItems.length}</span>)</h1>
+                        <button className='flex float-right flex-row right-5 absolute items-center gap-2 text-xl  '
+                            onClick={closeShopMenu}>
+                            <TfiClose />
+                            Fermer
+                        </button>
+                    </div>
 
-                        </li>
-                        <li>
+                    {shopItems.length > 0 ? (
+                        <>
+                            <ul className='flex flex-col overflow-y-auto px-3 py-2 shadow-2xl '>
+                                {shopItems.map((item, index) => (
+                                    <li key={index}
+                                        className='bg-[#f6f6f6] mb-3 w-full min-h-[127px] rounded-xl shadow-xl flex flex-col border border-black '>
+                                        <div className='flex flex-row'>
+                                            <div className='p-3'>
+                                            {item}{' '}
+                                            </div>
+                                            
+                                            <button className='ml-auto p-3'  onClick={() => removeItemFromShop(index)}><FaTrash size={18} /></button>
+                                        </div>
+                                        <div className='flex mt-auto items-center justify-end px-3'>
+                                            <span>1000.00DA</span>
+                                        </div>
 
-                        </li>
-                        <li>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className='flex flex-col mt-auto'>
+                                <div className=' rounded-full bg-black h-1 '></div>
+                                <div className='px-3 text-lg mt-2'>
+                                    <span className='float-left flex'>Total</span>
+                                    <span className='float-right'>1000.00DA</span>
+                                </div>
 
-                        </li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+
+
+                                <a href="#" className='w-full mt-5 inline-block text-center text-white font-bold text-xl tracking-wider bg-[#152949]  p-5 rounded-tl-3xl rounded-tr-3xl shadow-[0px_-10px_20px_10px_#00000024] hover:bg-white hover:text-[#152949] transition-all ease-in-out duration-500 hover:border hover:border-black hover:scale-105'>Commander</a>
+                            </div>
+
+                        </>
+
+                    ) : (
+                        <>
+                            <div className='flex flex-col justify-center items-center h-full'>
+                                <FaShoppingBag size={"4rem"} />
+
+                                <p className="text-center text-3xl mt-7 flex justify-center font-bold">
+                                    Votre panier est vide.
+                                </p>
+                                <p className="text-center text-lg mt-2 flex justify-center font-light">
+                                    Découvrez notre sélection de produits!
+                                </p>
+                            </div>
+
+                        </>
+                    )}
                 </motion.nav>
             )}
 
