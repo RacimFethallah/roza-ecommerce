@@ -8,11 +8,12 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 /* Add these styles to your CSS file or in your JSX if using a CSS-in-JS solution */
+/* Add these styles to your CSS file or in your JSX if using a CSS-in-JS solution */
 .carousel-container {
-  width: 80%;
-   /* Center the carousel container horizontally */
+  width: 90%;
   margin-top: auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+
 }
 
 /* Slide styles */
@@ -20,16 +21,23 @@
   outline: none; /* Remove the default outline on focus */
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center the content horizontally */
-  height: 100%; /* Ensure the slide takes the full height of the container */
+  justify-content: center; /* Center the content horizontally and vertically */
+}
+
+
+button.slick-arrow:nth-child(1){
+  z-index: 999;
+  margin-top: 20px;
+  left:410px;
+}
+button.slick-arrow:nth-child(3){
+  right:410px;
+  margin-top: 20px;
 }
 
 /* Ensure images take 100% width within the slide */
-.slick-slide img {
-  width: 100%;
-  max-height: 100%;
-}
 
 
 
