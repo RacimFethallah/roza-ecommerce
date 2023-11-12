@@ -9,6 +9,7 @@ import { BsTelephoneFill } from 'react-icons/bs';
 import { TfiClose } from 'react-icons/tfi';
 import { IoIosPeople } from 'react-icons/io';
 import { AiOutlineMenu, AiFillInfoCircle } from 'react-icons/ai';
+import Link from 'next/link';
 
 
 export default function Header() {
@@ -128,7 +129,7 @@ export default function Header() {
                     <ul className=''>
                         <li className=' flex flex-row items-center gap-3 text-xl mb-14 cursor-pointer'>
                             <FaHouse />
-                            Acceuil
+                            <Link href={{pathname:"/"}} onClick={closeSideMenu}>Acceuil</Link>  
                         </li>
                         <li className=' flex flex-row items-center gap-3 text-xl mb-14 cursor-pointer'>
                             <AiFillInfoCircle />
