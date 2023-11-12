@@ -24,31 +24,34 @@ const Round: React.FC = () => {
             </h1>
 
             <div className='carousel-container'>
+                <div>
+                    
+                </div>
                 <Slider {...settings}>
                     {/* Add your carousel items here */}
                     <div className="flex flex-col items-center">
-                        <img className='w-[10rem] h-[10rem] mx-auto mb-10' src="/images/image3.png" alt="" />
+                        <img className={currentSlide === 0 ? 'w-[10rem] h-[10rem] mx-auto mb-10 mt-8' : 'w-[10rem] h-[10rem] mx-auto mb-10'} src="/images/image3.png" alt="" />
                         <h1 className={currentSlide === 0 ? 'border border-black rounded-full inline-block p-4' : ''}>First One</h1>
                     </div>
 
                     <div className="flex flex-col items-center">
-                        <img className='w-[10rem] h-[10rem] mx-auto mb-10' src="/images/image3.png" alt="" />
+                    <img className={currentSlide === 1 ? 'w-[10rem] h-[10rem] mx-auto mb-10 mt-8' : 'w-[10rem] h-[10rem] mx-auto mb-10'} src="/images/image3.png" alt="" />
                         <h1 className={currentSlide === 1 ? 'border border-black rounded-full inline-block p-4' : ''}>Second One</h1>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img className='w-[10rem] h-[10rem] mx-auto mb-10' src="/images/image3.png" alt="" />
+                    <img className={currentSlide === 2 ? 'w-[10rem] h-[10rem] mx-auto mb-10 mt-8' : 'w-[10rem] h-[10rem] mx-auto mb-10'} src="/images/image3.png" alt="" />
                         <h1 className={currentSlide === 2 ? 'border border-black rounded-full inline-block p-4' : ''}>Third One</h1>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img className='w-[10rem] h-[10rem] mx-auto mb-10' src="/images/image3.png" alt="" />
+                    <img className={currentSlide === 3 ? 'w-[10rem] h-[10rem] mx-auto mb-10 mt-8' : 'w-[10rem] h-[10rem] mx-auto mb-10'} src="/images/image3.png" alt="" />
                         <h1 className={currentSlide === 3 ? 'border border-black rounded-full inline-block p-4' : ''}>Fourth One</h1>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img className='w-[10rem] h-[10rem] mx-auto mb-10' src="/images/image3.png" alt="" />
+                    <img className={currentSlide === 4 ? 'w-[10rem] h-[10rem] mx-auto mb-10 mt-8' : 'w-[10rem] h-[10rem] mx-auto mb-10'} src="/images/image3.png" alt="" />
                         <h1 className={currentSlide === 4 ? 'border border-black rounded-full inline-block p-4' : ''}>Fifth One</h1>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img className='w-[10rem] h-[10rem] mx-auto mb-10' src="/images/image3.png" alt="" />
+                    <img className={currentSlide === 5 ? 'w-[10rem] h-[10rem] mx-auto mb-10 mt-8' : 'w-[10rem] h-[10rem] mx-auto mb-10'} src="/images/image3.png" alt="" />
                         <h1 className={currentSlide === 5 ? 'border border-black rounded-full inline-block p-4' : ''}>Sixth One</h1>
                     </div>
 
