@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/globals.css */
+/* styles/globals.css */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/* Add these styles to your CSS file or in your JSX if using a CSS-in-JS solution */
+.carousel-container {
+  width: 80%;
+   /* Center the carousel container horizontally */
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+/* Slide styles */
+.slick-slide {
+  outline: none; /* Remove the default outline on focus */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content horizontally */
+  height: 100%; /* Ensure the slide takes the full height of the container */
+}
+
+/* Ensure images take 100% width within the slide */
+.slick-slide img {
+  width: 100%;
+  max-height: 100%;
+}
+
+
+
+
+
 @font-face {
   font-family: 'Cerlions-Regular';
   src: url('/fonts/Cerlions-Regular.otf') format('opentype');

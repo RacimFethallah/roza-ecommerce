@@ -15,7 +15,7 @@ export default function Hero() {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
             >
-                <img className='w-full h-screen object-cover absolute brightness-[0.6]' src="/images/heroBg.jpg" alt="" />
+                {/* <img className='w-full h-screen object-cover absolute brightness-[0.6]' src="/images/heroBg.jpg" alt="" /> */}
                 <motion.div
                 className='w-full h-full'
                 initial={{ scale: 0, opacity: 0 }}
@@ -29,7 +29,7 @@ export default function Hero() {
                     />
                 </motion.div>
 
-                <motion.div className='text-white text-xl font-thin flex flex-col justify-center items-center -mt-10 absolute bottom-0 mb-1'
+                <motion.div className='text-white text-xl font-thin flex flex-col justify-center items-center mt-auto mb-1'
                     initial={{ y: -50, opacity: 0 }}
                     whileInView={{ y: [0, -15, -20, 0], opacity: [1, 0.5, 1] }}
                     transition={{ duration: 1.5, repeat: Infinity }}>

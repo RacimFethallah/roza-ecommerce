@@ -8,10 +8,9 @@ export default function SectionPerfume() {
   return (
     <section>
             <motion.div className='relative w-screen h-screen  flex flex-col items-center justify-center shadow-2xl'
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+
             >
-                <img className='w-full h-screen object-cover absolute brightness-[0.6] shadow-[-10px_-10px_30px_10px_rgba(0,0,0,0.1)]' src="/images/perfumeBg.jpg" alt="" />
+                <img className='w-full h-screen object-cover absolute brightness-[0.9] shadow-[-10px_-10px_30px_10px_rgba(0,0,0,0.1)]' src="/images/perfumeBg.jpg" alt="" />
                 <img
                         className="h-[400px] w-[400px] object-cover mt-2 absolute top-[63%] left-[66.5%] transform -translate-x-1/2 -translate-y-1/2"
                         src="/images/Rozawb.png"
