@@ -10,9 +10,10 @@
 /* Add these styles to your CSS file or in your JSX if using a CSS-in-JS solution */
 /* Add these styles to your CSS file or in your JSX if using a CSS-in-JS solution */
 .carousel-container {
+  max-height: 50rem;
   width: 90%;
-  margin-top: auto;
-  margin-bottom: 50px;
+  margin-top: 15rem;
+  
 
 }
 
