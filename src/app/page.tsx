@@ -13,21 +13,6 @@ export default function Home() {
       <About />
       <SectionBathBombs />
       <SectionPerfume />
-      {/* <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider />
-      <SectionDivider /> */}
     </main>
   )
 }
